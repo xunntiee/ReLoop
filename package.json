@@ -1,0 +1,43 @@
+{
+  "name": "tool-base",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "catalog": {
+      "@types/node": "^22.13.14",
+      "typescript": "^6",
+      "zod": "^4.1.13"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev --filter=server --filter=web",
+    "build": "turbo build --filter=@tool-base/config --filter=server --filter=web",
+    "build:release": "powershell -ExecutionPolicy Bypass -File scripts/build-portable.ps1",
+    "build:portable": "powershell -ExecutionPolicy Bypass -File scripts/build-portable.ps1",
+    "build:portable:mac": "bash scripts/build-portable-mac.sh",
+    "build:local-web": "powershell -ExecutionPolicy Bypass -File scripts/build-portable.ps1",
+    "check-types": "turbo check-types --filter=@tool-base/config --filter=server --filter=web",
+    "smoke": "bun run smoke:crawl && bun run smoke:video && bun run smoke:handoff",
+    "smoke:crawl": "bun scripts/smoke/crawl-no-results.ts && bun scripts/smoke/crawl-date-filter.ts && bun scripts/smoke/crawl-option-normalization.ts && bun scripts/smoke/date-query-builder.ts && bun scripts/smoke/crawl-payload-builder.ts && bun scripts/smoke/crawl-input-matrix.ts && bun scripts/smoke/media-quality.ts && bun scripts/smoke/activity-metrics.ts && bun scripts/smoke/crawl-run-status.ts && bun scripts/smoke/comment-scan-profile.ts && bun scripts/smoke/comment-formatting.ts && bun scripts/smoke/preview-text-formatting.ts && bun scripts/smoke/comment-replies-filter.ts && bun scripts/smoke/comment-thread-context.ts && bun scripts/smoke/threads-dom-scripts.ts && bun scripts/smoke/comment-media-video-flow.ts && bun scripts/smoke/comment-contamination.ts && bun scripts/smoke/comment-dedup-selection.ts && bun scripts/smoke/direct-share-selection.ts && bun scripts/smoke/implicit-viral-defaults.ts && bun scripts/smoke/viral-score-weights.ts && bun scripts/smoke/viral-selection-quality.ts && bun scripts/smoke/viral-scale-budget.ts && bun scripts/smoke/crawl-resume-target.ts && bun scripts/smoke/stop-preview-truth.ts && bun scripts/smoke/ready-preview-stop.ts && bun scripts/smoke/resume-discovery-backfill.ts && bun scripts/smoke/resume-output-merge.ts && bun scripts/smoke/resume-viral-quality-floor.ts && bun scripts/smoke/output-comment-repair.ts && bun scripts/smoke/threads-seed-url-support.ts",
+    "smoke:video": "bun scripts/smoke/video-ocr-dialogue.ts && bun scripts/smoke/video-ocr-text-for-tts.ts && bun scripts/smoke/video-tts-shorthand.ts && bun scripts/smoke/video-tts-edit-persistence.ts && bun scripts/smoke/video-thread-pages.ts && bun scripts/smoke/video-render-media.ts && bun scripts/smoke/video-render-preflight.ts && bun scripts/smoke/video-speed-options.ts && bun scripts/smoke/vivibe-voice-list.ts && bun scripts/smoke/vivibe-tts-polling.ts && bun scripts/smoke/video-spoiler-render.ts",
+    "smoke:viral-live": "node apps/server/node_modules/tsx/dist/cli.mjs scripts/smoke/live-viral-feed.ts",
+    "smoke:handoff": "bun scripts/smoke/browser-priority-docs.ts && bun scripts/smoke/portable-lifecycle.ts && bun scripts/smoke/portable-mac-lifecycle.ts",
+    "dev:server": "turbo -F server dev",
+    "check": "ultracite check",
+    "fix": "ultracite fix"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.15",
+    "@tool-base/config": "workspace:*",
+    "@types/bun": "^1.3.14",
+    "@types/node": "catalog:",
+    "turbo": "^2.8.12",
+    "typescript": "catalog:",
+    "ultracite": "7.8.0"
+  },
+  "packageManager": "bun@1.3.14"
+}

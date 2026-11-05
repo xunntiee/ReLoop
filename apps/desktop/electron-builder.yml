@@ -1,0 +1,35 @@
+appId: com.toolbase.posttovideo
+productName: Post to Video
+artifactName: PostToVideo-Windows-${version}.${ext}
+asar: true
+compression: normal
+directories:
+  output: ../../release/desktop
+files:
+  - dist/**
+  - package.json
+extraResources:
+  - from: ../../apps/server/dist
+    to: server-dist
+  - from: ../../apps/web/dist
+    to: web-dist
+  - from: ../../.desktop-runtime/node_modules
+    to: node_modules
+  - from: ../../vendor/ffmpeg
+    to: ffmpeg
+  - from: ../../config.example.json
+    to: config.example.json
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+nsis:
+  oneClick: true
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: false
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  runAfterFinish: true
+  uninstallDisplayName: Post to Video

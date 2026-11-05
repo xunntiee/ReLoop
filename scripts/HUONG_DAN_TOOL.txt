@@ -1,0 +1,81 @@
+================================================================================
+          HƯỚNG DẪN SỬ DỤNG - CÔNG CỤ POST TO VIDEO (BẢN CHẠY OFFLINE)
+================================================================================
+
+Chào mừng bạn đã sử dụng Post to Video! Đây là phiên bản chạy trực tiếp trên máy tính
+của bạn mà không cần cài đặt phức tạp. Dưới đây là hướng dẫn chi tiết từng bước.
+
+YÊU CẦU TRÌNH DUYỆT
+--------------------------------------------------------------------------------
+- Máy tính cần cài Google Chrome hoặc Microsoft Edge để đăng nhập Threads và crawl dữ liệu.
+- Tool ưu tiên Google Chrome; nếu Chrome không khả dụng sẽ tự thử Microsoft Edge.
+- Bản portable không đóng kèm Chromium.
+- Nếu OPEN TOOL không khởi động được, tool sẽ hiện thông báo và ghi chi tiết vào
+  %LOCALAPPDATA%\ToolBase\logs\launcher-error.log.
+- Trước khi chép, cập nhật hoặc xóa bản tool, hãy chạy STOP TOOL.cmd để crawl/video
+  đang làm dở được lưu và các tiến trình nền được đóng an toàn.
+
+1. HƯỚNG DẪN BẮT ĐẦU NHANH
+--------------------------------------------------------------------------------
+Bước 1: Bắt buộc phải giải nén file ZIP này ra trước khi chạy.
+        - Nhấp chuột phải vào file ZIP đã tải về.
+        - Chọn "Extract All..." (hoặc "Giải nén ở đây" / "Extract Here").
+        - Chọn một thư mục trên máy tính của bạn (Ví dụ: Desktop hoặc ổ đĩa D, E) để lưu.
+        * LƯU Ý: Không chạy trực tiếp công cụ khi đang ở trong file ZIP!
+
+Bước 2: Mở phần mềm.
+        - Sau khi giải nén, vào thư mục vừa giải nén xong.
+        - Tìm và nhấp đúp chuột (double-click) vào file "OPEN TOOL.cmd".
+        - Một cửa sổ nhỏ sẽ hiện lên thông báo khởi động. 
+        - Đợi khoảng 5 - 15 giây, trình duyệt web (Chrome/Edge) trên máy sẽ tự động mở ra 
+          giao diện công cụ tại địa chỉ: http://localhost:34577/app
+
+Bước 3: Tạo lối tắt ngoài màn hình (Shortcut).
+        - Khi bạn chạy "OPEN TOOL.cmd" lần đầu tiên, hệ thống sẽ tự động tạo một biểu tượng 
+          lối tắt có tên "Post to Video" ngay trên màn hình Desktop của bạn.
+        - Từ lần sau, bạn chỉ cần bấm vào biểu tượng đó ở Desktop để mở nhanh công cụ.
+
+
+2. HƯỚNG DẪN TẮT PHẦN MỀM
+--------------------------------------------------------------------------------
+- Khi không sử dụng nữa, bạn có thể đóng tab trình duyệt web của phần mềm lại.
+- Để tắt hoàn toàn các tác vụ chạy ngầm trên máy tính giúp tiết kiệm tài nguyên máy,
+  hãy bấm đúp chuột vào file "STOP TOOL.cmd". Cửa sổ sẽ tự động đóng và dừng phần mềm.
+
+2.1. CẬP NHẬT BẰNG FILE ZIP MỚI
+--------------------------------------------------------------------------------
+- Mở mục "Cài đặt" trong tool và bấm "Import bản mới (.zip)".
+- Chọn file ZIP portable Windows mới tải về.
+- Tool sẽ tự lưu file, đóng server, thay phiên bản mới và mở lại. Không cần xóa
+  thư mục bản cũ và không làm mất dữ liệu/cấu hình trong %LOCALAPPDATA%\ToolBase.
+- Nếu bản mới không khởi động được, tool tự khôi phục bản trước và ghi log tại
+  %LOCALAPPDATA%\ToolBase\updates\updater.log.
+
+
+3. HƯỚNG DẪN LẤY API KEY FPT AI (ĐỂ DÙNG GIỌNG ĐỌC AI)
+--------------------------------------------------------------------------------
+Để công cụ có thể chuyển văn bản thành giọng đọc (chức năng tạo video thuyết minh), bạn cần điền mã khóa API Key của FPT AI. Cách lấy khóa miễn phí như sau:
+
+Bước 1: Đăng ký tài khoản.
+        - Truy cập vào trang web: https://console.fpt.ai
+        - Nhấp vào "Đăng ký" nếu chưa có tài khoản (có thể đăng ký nhanh bằng Google).
+
+Bước 2: Tạo dự án mới (Project).
+        - Sau khi đăng nhập, tại trang Dashboard, bấm vào nút "Tạo Project" (hoặc "Create Project").
+        - Đặt tên tùy ý (ví dụ: PostToVideo) và bấm Lưu.
+
+Bước 3: Kích hoạt dịch vụ giọng nói (Text-to-Speech).
+        - Ở danh sách dịch vụ bên tay trái, tìm mục "Text-to-Speech" (hoặc "Chuyển đổi văn bản thành giọng nói").
+        - Bấm nút kích hoạt/sử dụng cho Project bạn vừa tạo ở Bước 2.
+
+Bước 4: Copy API Key.
+        - Chọn vào tên Project của bạn trên thanh menu điều hướng.
+        - Tìm mục "API Key" (Mã khóa kết nối).
+        - Copy dòng mã bảo mật hiển thị ở đó (thường là một chuỗi ký tự dài).
+        - dán dòng mã này vào phần cài đặt FPT API Key trên giao diện của công cụ.
+
+
+4. NHỮNG LƯU Ý QUAN TRỌNG KHI SỬ DỤNG
+--------------------------------------------------------------------------------
+- Xem nhật ký hoạt động (Logs): Nếu có lỗi hoặc sự cố, bạn có thể xem chi tiết lỗi tại:
+  %LOCALAPPDATA%\ToolBase\logs\

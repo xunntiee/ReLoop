@@ -1,0 +1,81 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+dist
+build
+.desktop-runtime
+.local-web-runtime/ms-playwright/
+dist-desktop
+release
+*.tsbuildinfo
+.data
+
+# Environment variables
+.env
+.env*.local
+config.json
+
+# IDEs and editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Turbo
+.turbo
+.nx
+
+# Better-T-Stack
+.alchemy
+
+# Testing
+coverage
+.nyc_output
+
+# Misc
+*.tgz
+.cache
+tmp
+temp
+
+# Crawl runtime data
+data/raw/
+data/processed/
+data/assets/
+# But keep config assets (default avatars, etc.) tracked by git:
+!data/config/
+/storage/
+/apps/server/storage/
+
+# Local server logs
+server.*.log
+
+
+skills-lock.json
+.agents/
+.codex/
+AGENTS.md
+docs/.plans/
+video_audio/
+exported_videos/
+vendor/ffmpeg/bin/ffmpeg.exe
+vendor/ffmpeg/bin/ffprobe.exe
+vendor/ffmpeg/bin/ffplay.exe

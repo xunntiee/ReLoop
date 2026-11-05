@@ -1,0 +1,55 @@
+name: Build portable macOS
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_label:
+        description: Release label included in the ZIP filename
+        required: true
+        default: v1
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build ${{ matrix.label }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Apple-Silicon
+            runner: macos-15
+          - label: Intel
+            runner: macos-15-intel
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Install workspace dependencies
+        run: bun install --no-save
+
+      - name: Build portable ZIP
+        run: bash scripts/build-portable-mac.sh "${{ inputs.release_label }}"
+
+      - name: Upload portable ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: ToolCrawlToVideo-macOS-${{ matrix.label }}-${{ inputs.release_label }}
+          path: release/ToolCrawlToVideo-macOS-*.zip
+          if-no-files-found: error
+          retention-days: 14

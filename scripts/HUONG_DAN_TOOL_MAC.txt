@@ -1,0 +1,47 @@
+POST TO VIDEO - HUONG DAN CHO macOS
+==================================
+
+BAT DAU NHANH
+
+1. Tai dung file theo may:
+   - macOS arm64 / Apple Silicon: MacBook chip M1, M2, M3, M4...
+   - macOS x64 / Intel: MacBook chip Intel.
+2. Giai nen file ZIP ra mot thu muc tren may. Khong chay tool ngay trong file ZIP.
+3. May can co Google Chrome hoac Microsoft Edge. Tool uu tien Chrome, sau do tu dong thu Edge.
+4. Nhan dup "OPEN TOOL.command". Doi 5-30 giay, giao dien se mo trong trinh duyet.
+5. Khi khong dung nua, nhan dup "STOP TOOL.command" de luu tien do va tat cac tien trinh nen.
+
+LAN CHAY DAU BI macOS CHAN
+
+- Nhan chuot phai vao "OPEN TOOL.command", chon Open, sau do chon Open them mot lan.
+- Neu van bi chan, vao System Settings > Privacy & Security va chon Open Anyway.
+- Day la xac nhan bao mat mot lan cho goi noi bo chua notarize.
+
+YEU CAU
+
+- macOS 12 Monterey tro len.
+- Google Chrome hoac Microsoft Edge.
+- Ket noi Internet cho dang nhap Threads, crawl, license va dich vu giong noi.
+- Tai khoan Threads da dang nhap, license key hop le va Voice API da cau hinh.
+- Khong can cai Node.js, Bun, Playwright, Chromium hay FFmpeg. Cac thanh phan runtime can thiet
+  da nam trong goi portable.
+
+DU LIEU VA NHAT KY
+
+- Cau hinh, du lieu va log duoc luu tai:
+  ~/Library/Application Support/ToolBase/
+- De cap nhat, mo muc Cai dat trong tool va chon "Import ban moi (.zip)". Chon dung
+  goi macOS arm64 hoac Intel; tool se tu dong dong, thay ban moi va mo lai.
+- Khong can xoa thu muc ban cu va khong mat cau hinh trong thu muc du lieu ca nhan.
+- Du lieu ca nhan khong nam trong thu muc tool, vi vay thay ban portable khong lam mat cau hinh.
+
+Neu ban moi khong khoi dong duoc, tool tu khoi phuc ban truoc. Xem log tai:
+  ~/Library/Application Support/ToolBase/updates/updater.log
+
+NEU TOOL KHONG MO
+
+1. Kiem tra Chrome/Edge da duoc cai.
+2. Chay "STOP TOOL.command", sau do mo lai.
+3. Xem log tai:
+   ~/Library/Application Support/ToolBase/logs/launcher-error.log
+   ~/Library/Application Support/ToolBase/logs/server.err.log
